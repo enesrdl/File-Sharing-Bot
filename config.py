@@ -37,7 +37,7 @@ FORCE_SUB_CHANNEL = int(os.environ.get("FORCE_SUB_CHANNEL", "0"))
 TG_BOT_WORKERS = int(os.environ.get("TG_BOT_WORKERS", "4"))
 
 #start message
-START_MSG = os.environ.get("START_MESSAGE", "👋 Merhaba {mention},\n PDF indirmek için ilgili kanallara girip bağlantılara tıklamalısın.")
+START_MSG = os.environ.get("START_MESSAGE", "👋 Merhaba {mention},\n Bu bot ile Med Koçluk ücretsiz PDF'lerine erişebilirsin.\nPDF'lere erişmek için kanallardaki PDF indirme bağlantılarına tıklamalısın.")
 try:
     ADMINS=[]
     for x in (os.environ.get("ADMINS", "").split()):
