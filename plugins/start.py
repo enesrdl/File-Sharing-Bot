@@ -85,6 +85,13 @@ async def start_command(client: Client, message: Message):
                 pass
         return
     else:
+        reply_markup = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton("😊 About Me", callback_data = "about"),
+                    InlineKeyboardButton("🔒 Close", callback_data = "close")
+                ]
+            ]
         await message.reply_text(
             text = START_MSG.format(
                 first = message.from_user.first_name,
@@ -112,6 +119,13 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
     
 @Bot.on_message(filters.command('start') & filters.private)
 async def not_joined(client: Client, message: Message):
+    buttons = [
+        [
+            InlineKeyboardButton(
+                "Join Channel",
+                url = client.invitelink)
+        ]
+    ]
     try:
         buttons.append(
             [
