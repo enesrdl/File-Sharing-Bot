@@ -86,12 +86,6 @@ async def start_command(client: Client, message: Message):
         return
     else:
         reply_markup = InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(),
-                    InlineKeyboardButton()
-                ]
-            ]
         )
         reply_markup = InlineKeyboardMarkup
         await message.reply_text(
