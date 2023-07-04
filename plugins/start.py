@@ -55,11 +55,11 @@ async def start_command(client: Client, message: Message):
                 ids = [int(int(argument[1]) / abs(client.db_channel.id))]
             except:
                 return
-        temp_msg = await message.reply("Yükleniyor...")
+        temp_msg = await message.reply("Please wait...")
         try:
             messages = await get_messages(client, ids)
         except:
-            await message.reply_text("Bir şeyler ters gitti..!")
+            await message.reply_text("Something went wrong..!")
             return
         await temp_msg.delete()
 
@@ -92,6 +92,7 @@ async def start_command(client: Client, message: Message):
                     InlineKeyboardButton("🔒 Close", callback_data = "close")
                 ]
             ]
+        )
         await message.reply_text(
             text = START_MSG.format(
                 first = message.from_user.first_name,
@@ -109,7 +110,7 @@ async def start_command(client: Client, message: Message):
     
 #=====================================================================================##
 
-WAIT_MSG = """"<b>Yükleniyor...</b>"""
+WAIT_MSG = """"<b>Processing ...</b>"""
 
 REPLY_ERROR = """<code>Use this command as a replay to any telegram message with out any spaces.</code>"""
 
@@ -130,7 +131,7 @@ async def not_joined(client: Client, message: Message):
         buttons.append(
             [
                 InlineKeyboardButton(
-                    text = 'Tekrar Dene',
+                    text = 'Try Again',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
             ]
@@ -168,7 +169,7 @@ async def send_text(client: Bot, message: Message):
         deleted = 0
         unsuccessful = 0
         
-        pls_wait = await message.reply("<i>Duyuru yapılıyor...")
+        pls_wait = await message.reply("<i>Broadcasting Message.. This will Take Some Time</i>")
         for chat_id in query:
             try:
                 await broadcast_msg.copy(chat_id)
@@ -188,7 +189,7 @@ async def send_text(client: Bot, message: Message):
                 pass
             total += 1
         
-        status = f"""<b><u>Duyuru tamamlandı</u>
+        status = f"""<b><u>Broadcast Completed</u>
 
 Total Users: <code>{total}</code>
 Successful: <code>{successful}</code>
