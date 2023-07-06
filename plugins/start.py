@@ -121,20 +121,12 @@ REPLY_ERROR = """<code>Use this command as a replay to any telegram message with
 async def not_joined(client: Client, message: Message):
     buttons = [
         [	
-            InlineKeyboardButton(				
-                "Kanala katıl"
-)	   	
-        ]		
-    ]
-    try:
-        buttons.append(
-            [
                 InlineKeyboardButton(
                     text = 'Tekrar Dene',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
                 )
-            ]
-        )
+        ]		
+    ]
     except IndexError:
         pass
 
